@@ -1,0 +1,26 @@
+# Local data / logs
+mongo-data/
+*.log
+
+# Java / Maven
+backend/target/
+*.class
+
+
+# Node
+frontend/node_modules/
+frontend/dist/
+npm-debug.log*
+
+# Editors / OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+
+# Environment / secrets
+.env
+.env.*
+backend/.env
+frontend/.env
+!.env.example   
