@@ -13,9 +13,23 @@ public class CorsConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/**")
-                .allowedOrigins(frontendUrl)
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                .allowedHeaders("*");
+
+        registry.addMapping("/**")
+                .allowedOrigins(
+                        frontendUrl,
+                        "https://linehaul-ui.vercel.app"
+                )
+                .allowedMethods(
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "OPTIONS",
+                        "PATCH"
+                )
+                .allowedHeaders("*")
+                .exposedHeaders("*")
+                .allowCredentials(false)
+                .maxAge(3600);
     }
 }
