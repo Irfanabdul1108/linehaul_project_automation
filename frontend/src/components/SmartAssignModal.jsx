@@ -86,7 +86,6 @@ export default function SmartAssignModal({ order, drivers = [], vehicles = [], o
 
   useEffect(() => {
     analyse(true)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [order.orderId])
 
   const candidates = advice?.candidates || []
@@ -95,7 +94,6 @@ export default function SmartAssignModal({ order, drivers = [], vehicles = [], o
     [candidates, selectedId]
   )
 
-  // Drivers and trucks of the CURRENT warehouse only, exactly as the backend requires them too.
   const freeDrivers = useMemo(
     () => drivers.filter((driver) => !driver.routeId && driver.status === 'AVAILABLE'),
     [drivers]
@@ -123,8 +121,6 @@ export default function SmartAssignModal({ order, drivers = [], vehicles = [], o
       notify(result.message, 'success')
       onAssigned(result)
     } catch (problem) {
-      // the route list may be stale now (someone else loaded the truck), so refresh it and keep
-      // the refusal the API gave on screen - never swallow it
       const message = problem.message
       await analyse(false)
       setError(message)

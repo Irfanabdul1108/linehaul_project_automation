@@ -34,7 +34,6 @@ export function unloadIndex(route, destination) {
   if (samePlace(sequence[last], destination)) {
     return last
   }
-  // the origin is where freight is loaded, never where it is dropped
   for (let i = 1; i < last; i++) {
     if (samePlace(sequence[i], destination)) {
       return i

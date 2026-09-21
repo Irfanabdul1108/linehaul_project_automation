@@ -1,8 +1,5 @@
 import { scopedUrl } from './warehouse.js'
 
-// scopedUrl() appends ?warehouseId=... for the depot that is selected on the start screen, so every
-// call below stays scoped without changing its own signature. With no depot selected the URL is
-// untouched and the API answers for the whole network, exactly as before.
 async function request(url, options = {}) {
   const response = await fetch(scopedUrl(url), {
     headers: { 'Content-Type': 'application/json' },
@@ -54,9 +51,6 @@ export const createDriver = (driver) => request('/api/drivers', { method: 'POST'
 export const getDashboard = () => request('/api/dashboard/summary')
 export const getWarehouses = () => request('/api/warehouses')
 
-// Lane memory: how long the network already knows a drive between two places takes, so the Create
-// Route form can fill the duration in instead of asking for it again. Not warehouse scoped - a lane
-// belongs to the network, not to one depot.
 export const getLaneDurations = () => request('/api/lane-durations')
 export const lookupLaneDuration = (origin, destination) =>
   request(

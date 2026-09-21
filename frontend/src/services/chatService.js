@@ -6,8 +6,6 @@ const DATA_PROBLEM = "Sorry, I couldn't retrieve the current Linehaul data. Plea
 
 export async function askAssistant(message) {
   let response
-  // With a depot selected the question is scoped to it; without one the body stays exactly as it was
-  // before multi-warehouse support, so nothing about the existing contract changes.
   const depot = getActiveWarehouseId()
   const url = depot ? scopedUrl('/api/chat') : `${API_BASE_URL}/api/chat`
   const payload = depot ? { message, warehouseId: depot } : { message }

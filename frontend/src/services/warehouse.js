@@ -1,11 +1,5 @@
 import { useSyncExternalStore } from 'react'
 
-// Which depot the operator is working in.
-//
-// The id lives here, in one module, and is remembered in localStorage. api.js reads it and puts it on
-// every request, so all existing pages became warehouse aware without passing a single new prop.
-// automation.js uses the same helper for the assignment calls.
-
 const STORAGE_KEY = 'linehaul.warehouse'
 const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '')
 

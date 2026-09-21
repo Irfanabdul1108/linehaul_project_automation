@@ -286,8 +286,6 @@ export default function RoutesPage({ notify }) {
         <div className="route-grid">
           {pageRoutes.map((route) => {
             const editable = EDITABLE.includes(String(route.status).toUpperCase())
-            // While an order is in hand, a route that cannot deliver it is shown as closed rather
-            // than as a valid target - so the mismatch is visible before the drop, not after it.
             const accepts = !dragging || routeReaches(route, dragging.destination)
             return (
               <div
@@ -298,8 +296,7 @@ export default function RoutesPage({ notify }) {
                 data-testid={`drop-${route.routeId}`}
                 onDragOver={(event) => {
                   if (!editable) return
-                  // Refusing to preventDefault() on a mismatching route makes the browser itself show
-                  // the "not allowed" cursor.
+              
                   if (!accepts) return
                   event.preventDefault()
                   setOverRoute(route.routeId)
