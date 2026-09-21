@@ -18,8 +18,8 @@
     <description>Linehaul Management System with AI-assisted order assignment</description>
 
     <properties>
-        <java.version>26</java.version>
-        <maven.compiler.release>26</maven.compiler.release>
+       <java.version>21</java.version>
+<maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
